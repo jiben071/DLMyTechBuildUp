@@ -15,6 +15,12 @@
 		1008F68D1BB4DE2900300E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1008F68B1BB4DE2900300E12 /* LaunchScreen.storyboard */; };
 		1008F6981BB4DE2900300E12 /* DLGenTechBuildupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6971BB4DE2900300E12 /* DLGenTechBuildupTests.m */; };
 		1008F6A31BB4DE2900300E12 /* DLGenTechBuildupUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6A21BB4DE2900300E12 /* DLGenTechBuildupUITests.m */; };
+		10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */; settings = {ASSET_TAGS = (); }; };
+		10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530731BB52B1200189AB8 /* UIColor+Utility.m */; settings = {ASSET_TAGS = (); }; };
+		10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530791BB52BCD00189AB8 /* YMBaseDataModel.m */; settings = {ASSET_TAGS = (); }; };
+		10F530861BB52BCD00189AB8 /* YMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5307B1BB52BCD00189AB8 /* YMCategory.m */; settings = {ASSET_TAGS = (); }; };
+		10F530891BB52BCD00189AB8 /* YMPulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530811BB52BCD00189AB8 /* YMPulsingHaloLayer.m */; settings = {ASSET_TAGS = (); }; };
+		10F5308A1BB52BCD00189AB8 /* YMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530831BB52BCD00189AB8 /* YMUtils.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,19 @@
 		1008F69E1BB4DE2900300E12 /* DLGenTechBuildupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLGenTechBuildupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1008F6A21BB4DE2900300E12 /* DLGenTechBuildupUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLGenTechBuildupUITests.m; sourceTree = "<group>"; };
 		1008F6A41BB4DE2900300E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10F5306E1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLBasiceAppearanceSettingTool.h; sourceTree = "<group>"; };
+		10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLBasiceAppearanceSettingTool.m; sourceTree = "<group>"; };
+		10F530721BB52B1200189AB8 /* UIColor+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utility.h"; sourceTree = "<group>"; };
+		10F530731BB52B1200189AB8 /* UIColor+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Utility.m"; sourceTree = "<group>"; };
+		10F530781BB52BCD00189AB8 /* YMBaseDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMBaseDataModel.h; sourceTree = "<group>"; };
+		10F530791BB52BCD00189AB8 /* YMBaseDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMBaseDataModel.m; sourceTree = "<group>"; };
+		10F5307A1BB52BCD00189AB8 /* YMCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMCategory.h; sourceTree = "<group>"; };
+		10F5307B1BB52BCD00189AB8 /* YMCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMCategory.m; sourceTree = "<group>"; };
+		10F530801BB52BCD00189AB8 /* YMPulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMPulsingHaloLayer.h; sourceTree = "<group>"; };
+		10F530811BB52BCD00189AB8 /* YMPulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMPulsingHaloLayer.m; sourceTree = "<group>"; };
+		10F530821BB52BCD00189AB8 /* YMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMUtils.h; sourceTree = "<group>"; };
+		10F530831BB52BCD00189AB8 /* YMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMUtils.m; sourceTree = "<group>"; };
+		10F5308C1BB52C5600189AB8 /* DLCommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCommonMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +120,9 @@
 		1008F67C1BB4DE2900300E12 /* DLGenTechBuildup */ = {
 			isa = PBXGroup;
 			children = (
+				10F5308B1BB52C2C00189AB8 /* Macro */,
+				10F530711BB52B1200189AB8 /* Expand */,
+				10F5306D1BB52A2700189AB8 /* BaseTool */,
 				1008F6801BB4DE2900300E12 /* AppDelegate.h */,
 				1008F6811BB4DE2900300E12 /* AppDelegate.m */,
 				1008F6831BB4DE2900300E12 /* ViewController.h */,
@@ -138,6 +160,48 @@
 				1008F6A41BB4DE2900300E12 /* Info.plist */,
 			);
 			path = DLGenTechBuildupUITests;
+			sourceTree = "<group>";
+		};
+		10F5306D1BB52A2700189AB8 /* BaseTool */ = {
+			isa = PBXGroup;
+			children = (
+				10F5306E1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.h */,
+				10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */,
+			);
+			path = BaseTool;
+			sourceTree = "<group>";
+		};
+		10F530711BB52B1200189AB8 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				10F530751BB52BCD00189AB8 /* Helper */,
+				10F530721BB52B1200189AB8 /* UIColor+Utility.h */,
+				10F530731BB52B1200189AB8 /* UIColor+Utility.m */,
+			);
+			path = Expand;
+			sourceTree = "<group>";
+		};
+		10F530751BB52BCD00189AB8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				10F530781BB52BCD00189AB8 /* YMBaseDataModel.h */,
+				10F530791BB52BCD00189AB8 /* YMBaseDataModel.m */,
+				10F5307A1BB52BCD00189AB8 /* YMCategory.h */,
+				10F5307B1BB52BCD00189AB8 /* YMCategory.m */,
+				10F530801BB52BCD00189AB8 /* YMPulsingHaloLayer.h */,
+				10F530811BB52BCD00189AB8 /* YMPulsingHaloLayer.m */,
+				10F530821BB52BCD00189AB8 /* YMUtils.h */,
+				10F530831BB52BCD00189AB8 /* YMUtils.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		10F5308B1BB52C2C00189AB8 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				10F5308C1BB52C5600189AB8 /* DLCommonMacro.h */,
+			);
+			path = Macro;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,8 +335,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1008F6851BB4DE2900300E12 /* ViewController.m in Sources */,
+				10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */,
+				10F530861BB52BCD00189AB8 /* YMCategory.m in Sources */,
+				10F530891BB52BCD00189AB8 /* YMPulsingHaloLayer.m in Sources */,
 				1008F6821BB4DE2900300E12 /* AppDelegate.m in Sources */,
 				1008F67F1BB4DE2900300E12 /* main.m in Sources */,
+				10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */,
+				10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */,
+				10F5308A1BB52BCD00189AB8 /* YMUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,6 +570,7 @@
 				1008F6A91BB4DE2900300E12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1008F6AA1BB4DE2900300E12 /* Build configuration list for PBXNativeTarget "DLGenTechBuildupTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +579,7 @@
 				1008F6AC1BB4DE2900300E12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1008F6AD1BB4DE2900300E12 /* Build configuration list for PBXNativeTarget "DLGenTechBuildupUITests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +588,7 @@
 				1008F6AF1BB4DE2900300E12 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
