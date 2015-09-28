@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DLTestListTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    //    ALEntranceViewController *entranceVC = [[ALEntranceViewController alloc] init];
+    //    self.window.rootViewController = entranceVC;
+    
+    //实现手工改变跳转
+    DLTestListTableViewController *testListVC = [[DLTestListTableViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:testListVC];
+    self.window.rootViewController = nav;
     return YES;
 }
 
