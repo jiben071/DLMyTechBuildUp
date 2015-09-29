@@ -44,6 +44,7 @@
 		1007496B1BB91CDC00B80020 /* UITableViewCell+MarkKeyword.m in Sources */ = {isa = PBXBuildFile; fileRef = 100749481BB91CDC00B80020 /* UITableViewCell+MarkKeyword.m */; settings = {ASSET_TAGS = (); }; };
 		1007496C1BB91CDC00B80020 /* UITextField+HideKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1007494B1BB91CDC00B80020 /* UITextField+HideKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		1007496D1BB91CDC00B80020 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 1007494E1BB91CDC00B80020 /* UIView+Helpers.m */; settings = {ASSET_TAGS = (); }; };
+		100749701BB91EAE00B80020 /* UIView+AppendDivideLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 1007496F1BB91EAE00B80020 /* UIView+AppendDivideLine.m */; settings = {ASSET_TAGS = (); }; };
 		1008F67F1BB4DE2900300E12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F67E1BB4DE2900300E12 /* main.m */; };
 		1008F6821BB4DE2900300E12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6811BB4DE2900300E12 /* AppDelegate.m */; };
 		1008F6851BB4DE2900300E12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6841BB4DE2900300E12 /* ViewController.m */; };
@@ -52,6 +53,9 @@
 		1008F68D1BB4DE2900300E12 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1008F68B1BB4DE2900300E12 /* LaunchScreen.storyboard */; };
 		1008F6981BB4DE2900300E12 /* DLGenTechBuildupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6971BB4DE2900300E12 /* DLGenTechBuildupTests.m */; };
 		1008F6A31BB4DE2900300E12 /* DLGenTechBuildupUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008F6A21BB4DE2900300E12 /* DLGenTechBuildupUITests.m */; };
+		100A7BF51BBA22D900ADBCAF /* DLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BF41BBA22D900ADBCAF /* DLCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
+		100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */; settings = {ASSET_TAGS = (); }; };
+		100A7C001BBA247D00ADBCAF /* DLCollectionExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */; settings = {ASSET_TAGS = (); }; };
 		10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */; settings = {ASSET_TAGS = (); }; };
 		10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530731BB52B1200189AB8 /* UIColor+Utility.m */; settings = {ASSET_TAGS = (); }; };
 		10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530791BB52BCD00189AB8 /* YMBaseDataModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -153,6 +157,8 @@
 		1007494B1BB91CDC00B80020 /* UITextField+HideKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+HideKeyboard.m"; sourceTree = "<group>"; };
 		1007494D1BB91CDC00B80020 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		1007494E1BB91CDC00B80020 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		1007496E1BB91EAE00B80020 /* UIView+AppendDivideLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AppendDivideLine.h"; sourceTree = "<group>"; };
+		1007496F1BB91EAE00B80020 /* UIView+AppendDivideLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AppendDivideLine.m"; sourceTree = "<group>"; };
 		1008F67A1BB4DE2900300E12 /* DLGenTechBuildup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DLGenTechBuildup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1008F67E1BB4DE2900300E12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1008F6801BB4DE2900300E12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +175,12 @@
 		1008F69E1BB4DE2900300E12 /* DLGenTechBuildupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DLGenTechBuildupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1008F6A21BB4DE2900300E12 /* DLGenTechBuildupUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLGenTechBuildupUITests.m; sourceTree = "<group>"; };
 		1008F6A41BB4DE2900300E12 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		100A7BF31BBA22D900ADBCAF /* DLCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCollectionViewController.h; sourceTree = "<group>"; };
+		100A7BF41BBA22D900ADBCAF /* DLCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionViewController.m; sourceTree = "<group>"; };
+		100A7BFB1BBA23F800ADBCAF /* DLCollectionExampleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCollectionExampleView.h; sourceTree = "<group>"; };
+		100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionExampleView.m; sourceTree = "<group>"; };
+		100A7BFE1BBA247D00ADBCAF /* DLCollectionExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCollectionExampleCell.h; sourceTree = "<group>"; };
+		100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionExampleCell.m; sourceTree = "<group>"; };
 		10F5306E1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLBasiceAppearanceSettingTool.h; sourceTree = "<group>"; };
 		10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLBasiceAppearanceSettingTool.m; sourceTree = "<group>"; };
 		10F530721BB52B1200189AB8 /* UIColor+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utility.h"; sourceTree = "<group>"; };
@@ -233,6 +245,8 @@
 			children = (
 				100748441BB911D200B80020 /* DLButtonTestViewController.h */,
 				100748451BB911D200B80020 /* DLButtonTestViewController.m */,
+				100A7BF31BBA22D900ADBCAF /* DLCollectionViewController.h */,
+				100A7BF41BBA22D900ADBCAF /* DLCollectionViewController.m */,
 			);
 			path = CustomeUITest;
 			sourceTree = "<group>";
@@ -452,6 +466,8 @@
 			children = (
 				1007494D1BB91CDC00B80020 /* UIView+Helpers.h */,
 				1007494E1BB91CDC00B80020 /* UIView+Helpers.m */,
+				1007496E1BB91EAE00B80020 /* UIView+AppendDivideLine.h */,
+				1007496F1BB91EAE00B80020 /* UIView+AppendDivideLine.m */,
 			);
 			path = "UIView+Category";
 			sourceTree = "<group>";
@@ -489,6 +505,7 @@
 				100748FD1BB9196D00B80020 /* Tool */,
 				1007488F1BB913BA00B80020 /* Model */,
 				1007483F1BB90FC000B80020 /* Controller */,
+				100A7BF61BBA22FE00ADBCAF /* View */,
 				1007483B1BB90F7100B80020 /* CustomUI */,
 				10F5308B1BB52C2C00189AB8 /* Macro */,
 				10F530711BB52B1200189AB8 /* Expand */,
@@ -531,6 +548,25 @@
 				1008F6A41BB4DE2900300E12 /* Info.plist */,
 			);
 			path = DLGenTechBuildupUITests;
+			sourceTree = "<group>";
+		};
+		100A7BF61BBA22FE00ADBCAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				100A7BFA1BBA23F800ADBCAF /* CollectionView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		100A7BFA1BBA23F800ADBCAF /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				100A7BFB1BBA23F800ADBCAF /* DLCollectionExampleView.h */,
+				100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */,
+				100A7BFE1BBA247D00ADBCAF /* DLCollectionExampleCell.h */,
+				100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 		10F5306D1BB52A2700189AB8 /* BaseTool */ = {
@@ -713,14 +749,17 @@
 				100749651BB91CDC00B80020 /* UIImage+Resize.m in Sources */,
 				1007496C1BB91CDC00B80020 /* UITextField+HideKeyboard.m in Sources */,
 				100749671BB91CDC00B80020 /* UIImage+Scale.m in Sources */,
+				100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */,
 				100749611BB91CDC00B80020 /* UIFont+UserCustomFont.m in Sources */,
 				100749531BB91CDC00B80020 /* NSDate+Helpers.m in Sources */,
 				10F530861BB52BCD00189AB8 /* YMCategory.m in Sources */,
+				100A7C001BBA247D00ADBCAF /* DLCollectionExampleCell.m in Sources */,
 				100749571BB91CDC00B80020 /* NSString+Extension.m in Sources */,
 				100749681BB91CDC00B80020 /* UIImage+UIImageExt.m in Sources */,
 				100749691BB91CDC00B80020 /* UIImageResizing.m in Sources */,
 				1007496D1BB91CDC00B80020 /* UIView+Helpers.m in Sources */,
 				100749501BB91CDC00B80020 /* UILabel+WhiteUIDatePickerLabels.m in Sources */,
+				100749701BB91EAE00B80020 /* UIView+AppendDivideLine.m in Sources */,
 				100749581BB91CDC00B80020 /* NSString+Helpers.m in Sources */,
 				1007495B1BB91CDC00B80020 /* NSTimer+blockSupport.m in Sources */,
 				100749041BB9196E00B80020 /* InternationalControl.m in Sources */,
@@ -738,6 +777,7 @@
 				10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */,
 				10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */,
 				1007495C1BB91CDC00B80020 /* NSUserDefaults+Helpers.m in Sources */,
+				100A7BF51BBA22D900ADBCAF /* DLCollectionViewController.m in Sources */,
 				1007495A1BB91CDC00B80020 /* NSString+Utility.m in Sources */,
 				1007496B1BB91CDC00B80020 /* UITableViewCell+MarkKeyword.m in Sources */,
 				10F5308A1BB52BCD00189AB8 /* YMUtils.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "DLTestListTableViewController.h"
+#import "DLButtonTestViewController.h"
 
 @interface DLTestListTableViewController ()
 @property (nonatomic,strong) NSMutableArray *dataList;/**< 数据容器 */
@@ -20,18 +21,20 @@
     return _dataList;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.clearsSelectionOnViewWillAppear = NO;
      self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self initData];
+    [self.tableView reloadData];
 }
 
 - (void)initData{
-    [_dataList addObject:@(1)];
-    [_dataList addObject:@(2)];
-    [_dataList addObject:@(3)];
+    [self.dataList addObject:@(1)];
+    [self.dataList addObject:@(2)];
+    [self.dataList addObject:@(3)];
 }
 
 
@@ -46,10 +49,28 @@
     return self.dataList.count;
 }
 
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+//    cell.textLabel.text = @"测试";
+//    return cell;
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if(!cell){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
     cell.textLabel.text = @"测试";
     return cell;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 0) {
+        DLButtonTestViewController *btnTestVC = [[DLButtonTestViewController alloc] init];
+        [self.navigationController pushViewController:btnTestVC animated:YES];
+    }
 }
 
 /*

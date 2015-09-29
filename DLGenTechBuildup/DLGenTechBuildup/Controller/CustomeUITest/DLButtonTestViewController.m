@@ -7,6 +7,7 @@
 //
 
 #import "DLButtonTestViewController.h"
+#import "UIView+AppendDivideLine.h"
 
 @interface DLButtonTestViewController ()
 
@@ -16,22 +17,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
+    [self testAppendLine];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - 测试添加分割线功能
+- (void)testAppendLine{
+    UIView *bigView = [[UIView alloc] initWithFrame:CGRectMake(50, 150, 200, 200)];
+    bigView.backgroundColor = [UIColor blackColor];
+    [bigView appendDivideLine:AppendDivideLineTypeBottom lineColor:[UIColor lightTextColor]];
+    [self.view addSubview:bigView];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end
