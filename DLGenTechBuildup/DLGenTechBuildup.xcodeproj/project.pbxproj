@@ -64,6 +64,7 @@
 		10F530861BB52BCD00189AB8 /* YMCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5307B1BB52BCD00189AB8 /* YMCategory.m */; settings = {ASSET_TAGS = (); }; };
 		10F530891BB52BCD00189AB8 /* YMPulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530811BB52BCD00189AB8 /* YMPulsingHaloLayer.m */; settings = {ASSET_TAGS = (); }; };
 		10F5308A1BB52BCD00189AB8 /* YMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530831BB52BCD00189AB8 /* YMUtils.m */; settings = {ASSET_TAGS = (); }; };
+		709699E3F5886C5B3FC28731 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F895EE1CDD1D05B335394220 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,9 @@
 		10F530821BB52BCD00189AB8 /* YMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMUtils.h; sourceTree = "<group>"; };
 		10F530831BB52BCD00189AB8 /* YMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YMUtils.m; sourceTree = "<group>"; };
 		10F5308C1BB52C5600189AB8 /* DLCommonMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCommonMacro.h; sourceTree = "<group>"; };
+		111D5833FD9DF57CCA6FD44C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D865B841AEC0D6252A287BA9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F895EE1CDD1D05B335394220 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				709699E3F5886C5B3FC28731 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +232,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10069C1B1BC7683B0066B8E1 /* PasswordView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PasswordView;
+			sourceTree = "<group>";
+		};
 		1007483B1BB90F7100B80020 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +507,8 @@
 				1008F6961BB4DE2900300E12 /* DLGenTechBuildupTests */,
 				1008F6A11BB4DE2900300E12 /* DLGenTechBuildupUITests */,
 				1008F67B1BB4DE2900300E12 /* Products */,
+				4E0A2E1DC3B676B675741272 /* Pods */,
+				E23BE9F065E7C61024012276 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -562,6 +576,7 @@
 		100A7BF61BBA22FE00ADBCAF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				10069C1B1BC7683B0066B8E1 /* PasswordView */,
 				100A7BFA1BBA23F800ADBCAF /* CollectionView */,
 			);
 			path = View;
@@ -629,6 +644,23 @@
 			path = Macro;
 			sourceTree = "<group>";
 		};
+		4E0A2E1DC3B676B675741272 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				111D5833FD9DF57CCA6FD44C /* Pods.debug.xcconfig */,
+				D865B841AEC0D6252A287BA9 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E23BE9F065E7C61024012276 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F895EE1CDD1D05B335394220 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -636,9 +668,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1008F6A71BB4DE2900300E12 /* Build configuration list for PBXNativeTarget "DLGenTechBuildup" */;
 			buildPhases = (
+				DC806BBE2823B9AC027E8ED5 /* Check Pods Manifest.lock */,
 				1008F6761BB4DE2900300E12 /* Sources */,
 				1008F6771BB4DE2900300E12 /* Frameworks */,
 				1008F6781BB4DE2900300E12 /* Resources */,
+				5A33FEF9E3F85C08EA9514EB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -753,6 +787,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A33FEF9E3F85C08EA9514EB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC806BBE2823B9AC027E8ED5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1008F6761BB4DE2900300E12 /* Sources */ = {
@@ -949,6 +1016,7 @@
 		};
 		1008F6A81BB4DE2900300E12 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 111D5833FD9DF57CCA6FD44C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DLGenTechBuildup/Info.plist;
@@ -961,6 +1029,7 @@
 		};
 		1008F6A91BB4DE2900300E12 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D865B841AEC0D6252A287BA9 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DLGenTechBuildup/Info.plist;

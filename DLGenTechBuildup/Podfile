@@ -1,0 +1,11 @@
+inhibit_all_warnings!
+platform :ios, '7.0'
+pod "AFNetworking", "~> 2.0"
+pod 'Masonry'
+pod 'pop', '~> 1.0'
+pod 'CocoaAsyncSocket'
+pod "MPMessagePack"
+pod 'PKRevealController'
+pod 'HMSegmentedControl'
+pod 'SDCycleScrollView', '~> 1.3'
+#pod 'WZLBadge', '~> 1.1.2'
