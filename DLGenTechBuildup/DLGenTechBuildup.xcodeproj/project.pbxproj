@@ -56,6 +56,14 @@
 		100A7BF51BBA22D900ADBCAF /* DLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BF41BBA22D900ADBCAF /* DLCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */; settings = {ASSET_TAGS = (); }; };
 		100A7C001BBA247D00ADBCAF /* DLCollectionExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */; settings = {ASSET_TAGS = (); }; };
+		10166D1A1BC79444001B2A70 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D0B1BC79444001B2A70 /* NSString+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		10166D1B1BC79444001B2A70 /* trade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10166D0D1BC79444001B2A70 /* trade.bundle */; settings = {ASSET_TAGS = (); }; };
+		10166D1C1BC79444001B2A70 /* UIAlertView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D0F1BC79444001B2A70 /* UIAlertView+Quick.m */; settings = {ASSET_TAGS = (); }; };
+		10166D1D1BC79444001B2A70 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D111BC79444001B2A70 /* UIView+Extension.m */; settings = {ASSET_TAGS = (); }; };
+		10166D1E1BC79444001B2A70 /* ZCAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D131BC79444001B2A70 /* ZCAudioTool.m */; settings = {ASSET_TAGS = (); }; };
+		10166D1F1BC79444001B2A70 /* ZCTradeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D151BC79444001B2A70 /* ZCTradeInputView.m */; settings = {ASSET_TAGS = (); }; };
+		10166D201BC79444001B2A70 /* ZCTradeKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D171BC79444001B2A70 /* ZCTradeKeyboard.m */; settings = {ASSET_TAGS = (); }; };
+		10166D211BC79444001B2A70 /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D191BC79444001B2A70 /* ZCTradeView.m */; settings = {ASSET_TAGS = (); }; };
 		109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 109883441BBA5C5400310F7B /* UIImage+dl.m */; settings = {ASSET_TAGS = (); }; };
 		1098834C1BBA8CCD00310F7B /* UINavigationBar+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */; settings = {ASSET_TAGS = (); }; };
 		10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */; settings = {ASSET_TAGS = (); }; };
@@ -184,6 +192,22 @@
 		100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionExampleView.m; sourceTree = "<group>"; };
 		100A7BFE1BBA247D00ADBCAF /* DLCollectionExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCollectionExampleCell.h; sourceTree = "<group>"; };
 		100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionExampleCell.m; sourceTree = "<group>"; };
+		10166D0A1BC79444001B2A70 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		10166D0B1BC79444001B2A70 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		10166D0C1BC79444001B2A70 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		10166D0D1BC79444001B2A70 /* trade.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = trade.bundle; sourceTree = "<group>"; };
+		10166D0E1BC79444001B2A70 /* UIAlertView+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Quick.h"; sourceTree = "<group>"; };
+		10166D0F1BC79444001B2A70 /* UIAlertView+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Quick.m"; sourceTree = "<group>"; };
+		10166D101BC79444001B2A70 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		10166D111BC79444001B2A70 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		10166D121BC79444001B2A70 /* ZCAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAudioTool.h; sourceTree = "<group>"; };
+		10166D131BC79444001B2A70 /* ZCAudioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAudioTool.m; sourceTree = "<group>"; };
+		10166D141BC79444001B2A70 /* ZCTradeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeInputView.h; sourceTree = "<group>"; };
+		10166D151BC79444001B2A70 /* ZCTradeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeInputView.m; sourceTree = "<group>"; };
+		10166D161BC79444001B2A70 /* ZCTradeKeyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeKeyboard.h; sourceTree = "<group>"; };
+		10166D171BC79444001B2A70 /* ZCTradeKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeKeyboard.m; sourceTree = "<group>"; };
+		10166D181BC79444001B2A70 /* ZCTradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeView.h; sourceTree = "<group>"; };
+		10166D191BC79444001B2A70 /* ZCTradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeView.m; sourceTree = "<group>"; };
 		109883431BBA5C5400310F7B /* UIImage+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+dl.h"; sourceTree = "<group>"; };
 		109883441BBA5C5400310F7B /* UIImage+dl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+dl.m"; sourceTree = "<group>"; };
 		1098834A1BBA8CCD00310F7B /* UINavigationBar+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+dl.h"; sourceTree = "<group>"; };
@@ -534,6 +558,7 @@
 				10F530711BB52B1200189AB8 /* Expand */,
 				10F5306D1BB52A2700189AB8 /* BaseTool */,
 				100748471BB9125100B80020 /* Category */,
+				10166D081BC79434001B2A70 /* Vender */,
 				1008F6801BB4DE2900300E12 /* AppDelegate.h */,
 				1008F6811BB4DE2900300E12 /* AppDelegate.m */,
 				1008F6831BB4DE2900300E12 /* ViewController.h */,
@@ -591,6 +616,37 @@
 				100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		10166D081BC79434001B2A70 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				10166D091BC79444001B2A70 /* ZCTradeView */,
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		10166D091BC79444001B2A70 /* ZCTradeView */ = {
+			isa = PBXGroup;
+			children = (
+				10166D0A1BC79444001B2A70 /* NSString+Extension.h */,
+				10166D0B1BC79444001B2A70 /* NSString+Extension.m */,
+				10166D0C1BC79444001B2A70 /* Singleton.h */,
+				10166D0D1BC79444001B2A70 /* trade.bundle */,
+				10166D0E1BC79444001B2A70 /* UIAlertView+Quick.h */,
+				10166D0F1BC79444001B2A70 /* UIAlertView+Quick.m */,
+				10166D101BC79444001B2A70 /* UIView+Extension.h */,
+				10166D111BC79444001B2A70 /* UIView+Extension.m */,
+				10166D121BC79444001B2A70 /* ZCAudioTool.h */,
+				10166D131BC79444001B2A70 /* ZCAudioTool.m */,
+				10166D141BC79444001B2A70 /* ZCTradeInputView.h */,
+				10166D151BC79444001B2A70 /* ZCTradeInputView.m */,
+				10166D161BC79444001B2A70 /* ZCTradeKeyboard.h */,
+				10166D171BC79444001B2A70 /* ZCTradeKeyboard.m */,
+				10166D181BC79444001B2A70 /* ZCTradeView.h */,
+				10166D191BC79444001B2A70 /* ZCTradeView.m */,
+			);
+			path = ZCTradeView;
 			sourceTree = "<group>";
 		};
 		109883491BBA8CB300310F7B /* UINavigationBar+Category */ = {
@@ -766,6 +822,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10166D1B1BC79444001B2A70 /* trade.bundle in Resources */,
 				1008F68D1BB4DE2900300E12 /* LaunchScreen.storyboard in Resources */,
 				1008F68A1BB4DE2900300E12 /* Assets.xcassets in Resources */,
 				1008F6881BB4DE2900300E12 /* Main.storyboard in Resources */,
@@ -827,6 +884,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				100749561BB91CDC00B80020 /* NSString+Convert.m in Sources */,
+				10166D1F1BC79444001B2A70 /* ZCTradeInputView.m in Sources */,
 				1008F6851BB4DE2900300E12 /* ViewController.m in Sources */,
 				100748941BB913BA00B80020 /* BaseModel.m in Sources */,
 				10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */,
@@ -835,9 +893,12 @@
 				1007496C1BB91CDC00B80020 /* UITextField+HideKeyboard.m in Sources */,
 				100749671BB91CDC00B80020 /* UIImage+Scale.m in Sources */,
 				109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */,
+				10166D1C1BC79444001B2A70 /* UIAlertView+Quick.m in Sources */,
 				100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */,
+				10166D201BC79444001B2A70 /* ZCTradeKeyboard.m in Sources */,
 				100749611BB91CDC00B80020 /* UIFont+UserCustomFont.m in Sources */,
 				100749531BB91CDC00B80020 /* NSDate+Helpers.m in Sources */,
+				10166D1E1BC79444001B2A70 /* ZCAudioTool.m in Sources */,
 				10F530861BB52BCD00189AB8 /* YMCategory.m in Sources */,
 				100A7C001BBA247D00ADBCAF /* DLCollectionExampleCell.m in Sources */,
 				100749571BB91CDC00B80020 /* NSString+Extension.m in Sources */,
@@ -851,6 +912,7 @@
 				100749041BB9196E00B80020 /* InternationalControl.m in Sources */,
 				10F530891BB52BCD00189AB8 /* YMPulsingHaloLayer.m in Sources */,
 				1007495E1BB91CDC00B80020 /* UIButton+Extension.m in Sources */,
+				10166D1A1BC79444001B2A70 /* NSString+Extension.m in Sources */,
 				100749641BB91CDC00B80020 /* UIImage+Gif.m in Sources */,
 				100749031BB9196E00B80020 /* ALCommentMethod.m in Sources */,
 				1008F6821BB4DE2900300E12 /* AppDelegate.m in Sources */,
@@ -859,6 +921,7 @@
 				100749631BB91CDC00B80020 /* UIImage+Draw.m in Sources */,
 				100749541BB91CDC00B80020 /* NSDate-Utilities.m in Sources */,
 				1008F67F1BB4DE2900300E12 /* main.m in Sources */,
+				10166D1D1BC79444001B2A70 /* UIView+Extension.m in Sources */,
 				1098834C1BBA8CCD00310F7B /* UINavigationBar+dl.m in Sources */,
 				1007495F1BB91CDC00B80020 /* UIColor+Helper.m in Sources */,
 				10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */,
@@ -877,6 +940,7 @@
 				100749591BB91CDC00B80020 /* NSString+size.m in Sources */,
 				1007483E1BB90F9900B80020 /* DVToolButton.m in Sources */,
 				100748951BB913BA00B80020 /* UploadImageInfo.m in Sources */,
+				10166D211BC79444001B2A70 /* ZCTradeView.m in Sources */,
 				100749511BB91CDC00B80020 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
