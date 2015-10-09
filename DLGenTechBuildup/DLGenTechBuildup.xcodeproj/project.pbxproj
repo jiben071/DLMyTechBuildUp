@@ -56,6 +56,8 @@
 		100A7BF51BBA22D900ADBCAF /* DLCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BF41BBA22D900ADBCAF /* DLCollectionViewController.m */; settings = {ASSET_TAGS = (); }; };
 		100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */; settings = {ASSET_TAGS = (); }; };
 		100A7C001BBA247D00ADBCAF /* DLCollectionExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */; settings = {ASSET_TAGS = (); }; };
+		109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 109883441BBA5C5400310F7B /* UIImage+dl.m */; settings = {ASSET_TAGS = (); }; };
+		1098834C1BBA8CCD00310F7B /* UINavigationBar+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */; settings = {ASSET_TAGS = (); }; };
 		10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */; settings = {ASSET_TAGS = (); }; };
 		10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530731BB52B1200189AB8 /* UIColor+Utility.m */; settings = {ASSET_TAGS = (); }; };
 		10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530791BB52BCD00189AB8 /* YMBaseDataModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -181,6 +183,10 @@
 		100A7BFC1BBA23F800ADBCAF /* DLCollectionExampleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionExampleView.m; sourceTree = "<group>"; };
 		100A7BFE1BBA247D00ADBCAF /* DLCollectionExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLCollectionExampleCell.h; sourceTree = "<group>"; };
 		100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLCollectionExampleCell.m; sourceTree = "<group>"; };
+		109883431BBA5C5400310F7B /* UIImage+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+dl.h"; sourceTree = "<group>"; };
+		109883441BBA5C5400310F7B /* UIImage+dl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+dl.m"; sourceTree = "<group>"; };
+		1098834A1BBA8CCD00310F7B /* UINavigationBar+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+dl.h"; sourceTree = "<group>"; };
+		1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+dl.m"; sourceTree = "<group>"; };
 		10F5306E1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLBasiceAppearanceSettingTool.h; sourceTree = "<group>"; };
 		10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLBasiceAppearanceSettingTool.m; sourceTree = "<group>"; };
 		10F530721BB52B1200189AB8 /* UIColor+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utility.h"; sourceTree = "<group>"; };
@@ -274,6 +280,7 @@
 		100748971BB916B100B80020 /* CommenCategories */ = {
 			isa = PBXGroup;
 			children = (
+				109883491BBA8CB300310F7B /* UINavigationBar+Category */,
 				100749051BB91CDC00B80020 /* Label+Category */,
 				100749081BB91CDC00B80020 /* NSData+Category */,
 				1007490D1BB91CDC00B80020 /* NSDate+Category */,
@@ -421,6 +428,8 @@
 		100749331BB91CDC00B80020 /* UIImage+Category */ = {
 			isa = PBXGroup;
 			children = (
+				109883431BBA5C5400310F7B /* UIImage+dl.h */,
+				109883441BBA5C5400310F7B /* UIImage+dl.m */,
 				100749341BB91CDC00B80020 /* UIImage+Alpha.h */,
 				100749351BB91CDC00B80020 /* UIImage+Alpha.m */,
 				100749361BB91CDC00B80020 /* UIImage+Draw.h */,
@@ -567,6 +576,15 @@
 				100A7BFF1BBA247D00ADBCAF /* DLCollectionExampleCell.m */,
 			);
 			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		109883491BBA8CB300310F7B /* UINavigationBar+Category */ = {
+			isa = PBXGroup;
+			children = (
+				1098834A1BBA8CCD00310F7B /* UINavigationBar+dl.h */,
+				1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */,
+			);
+			path = "UINavigationBar+Category";
 			sourceTree = "<group>";
 		};
 		10F5306D1BB52A2700189AB8 /* BaseTool */ = {
@@ -749,6 +767,7 @@
 				100749651BB91CDC00B80020 /* UIImage+Resize.m in Sources */,
 				1007496C1BB91CDC00B80020 /* UITextField+HideKeyboard.m in Sources */,
 				100749671BB91CDC00B80020 /* UIImage+Scale.m in Sources */,
+				109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */,
 				100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */,
 				100749611BB91CDC00B80020 /* UIFont+UserCustomFont.m in Sources */,
 				100749531BB91CDC00B80020 /* NSDate+Helpers.m in Sources */,
@@ -773,6 +792,7 @@
 				100749631BB91CDC00B80020 /* UIImage+Draw.m in Sources */,
 				100749541BB91CDC00B80020 /* NSDate-Utilities.m in Sources */,
 				1008F67F1BB4DE2900300E12 /* main.m in Sources */,
+				1098834C1BBA8CCD00310F7B /* UINavigationBar+dl.m in Sources */,
 				1007495F1BB91CDC00B80020 /* UIColor+Helper.m in Sources */,
 				10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */,
 				10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */,

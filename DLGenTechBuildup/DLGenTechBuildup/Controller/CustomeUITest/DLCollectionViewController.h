@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+/*!
+ *  @author denglong, 15-10-09 11:10:45
+ *
+ *  @brief  CollectionView测试
+ */
 @interface DLCollectionViewController : UIViewController
 
 @end

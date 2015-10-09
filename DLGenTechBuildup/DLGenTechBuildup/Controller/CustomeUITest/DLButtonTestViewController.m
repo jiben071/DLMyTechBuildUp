@@ -8,6 +8,7 @@
 
 #import "DLButtonTestViewController.h"
 #import "UIView+AppendDivideLine.h"
+#import "UINavigationBar+dl.h"
 
 @interface DLButtonTestViewController ()
 
@@ -20,6 +21,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
     [self testAppendLine];
+    
+//    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor redColor]];
 }
 
 #pragma mark - 测试添加分割线功能
