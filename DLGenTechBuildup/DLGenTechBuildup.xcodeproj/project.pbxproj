@@ -66,6 +66,7 @@
 		10166D211BC79444001B2A70 /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D191BC79444001B2A70 /* ZCTradeView.m */; settings = {ASSET_TAGS = (); }; };
 		109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 109883441BBA5C5400310F7B /* UIImage+dl.m */; settings = {ASSET_TAGS = (); }; };
 		1098834C1BBA8CCD00310F7B /* UINavigationBar+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */; settings = {ASSET_TAGS = (); }; };
+		10C614E51BCD211D00E6B7D7 /* DLVedioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C614E41BCD211D00E6B7D7 /* DLVedioTool.m */; settings = {ASSET_TAGS = (); }; };
 		10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */; settings = {ASSET_TAGS = (); }; };
 		10F530741BB52B1200189AB8 /* UIColor+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530731BB52B1200189AB8 /* UIColor+Utility.m */; settings = {ASSET_TAGS = (); }; };
 		10F530851BB52BCD00189AB8 /* YMBaseDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 10F530791BB52BCD00189AB8 /* YMBaseDataModel.m */; settings = {ASSET_TAGS = (); }; };
@@ -212,6 +213,8 @@
 		109883441BBA5C5400310F7B /* UIImage+dl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+dl.m"; sourceTree = "<group>"; };
 		1098834A1BBA8CCD00310F7B /* UINavigationBar+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+dl.h"; sourceTree = "<group>"; };
 		1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+dl.m"; sourceTree = "<group>"; };
+		10C614E31BCD211D00E6B7D7 /* DLVedioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLVedioTool.h; sourceTree = "<group>"; };
+		10C614E41BCD211D00E6B7D7 /* DLVedioTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLVedioTool.m; sourceTree = "<group>"; };
 		10F5306E1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLBasiceAppearanceSettingTool.h; sourceTree = "<group>"; };
 		10F5306F1BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLBasiceAppearanceSettingTool.m; sourceTree = "<group>"; };
 		10F530721BB52B1200189AB8 /* UIColor+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Utility.h"; sourceTree = "<group>"; };
@@ -339,6 +342,7 @@
 		100748FD1BB9196D00B80020 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				10C614E21BCD210200E6B7D7 /* MediaTool */,
 				100748FE1BB9196D00B80020 /* InternationalControl */,
 			);
 			path = Tool;
@@ -658,6 +662,15 @@
 			path = "UINavigationBar+Category";
 			sourceTree = "<group>";
 		};
+		10C614E21BCD210200E6B7D7 /* MediaTool */ = {
+			isa = PBXGroup;
+			children = (
+				10C614E31BCD211D00E6B7D7 /* DLVedioTool.h */,
+				10C614E41BCD211D00E6B7D7 /* DLVedioTool.m */,
+			);
+			path = MediaTool;
+			sourceTree = "<group>";
+		};
 		10F5306D1BB52A2700189AB8 /* BaseTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,6 +909,7 @@
 				10166D1C1BC79444001B2A70 /* UIAlertView+Quick.m in Sources */,
 				100A7BFD1BBA23F800ADBCAF /* DLCollectionExampleView.m in Sources */,
 				10166D201BC79444001B2A70 /* ZCTradeKeyboard.m in Sources */,
+				10C614E51BCD211D00E6B7D7 /* DLVedioTool.m in Sources */,
 				100749611BB91CDC00B80020 /* UIFont+UserCustomFont.m in Sources */,
 				100749531BB91CDC00B80020 /* NSDate+Helpers.m in Sources */,
 				10166D1E1BC79444001B2A70 /* ZCAudioTool.m in Sources */,
