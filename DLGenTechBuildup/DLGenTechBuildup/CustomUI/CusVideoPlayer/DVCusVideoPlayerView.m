@@ -11,6 +11,7 @@
 //#import "DVHttpMethod.h"
 //#import "NSFileManager+DragonCategory.h"
 #import <AVFoundation/AVFoundation.h>
+#import "Masonry.h"
 
 #define kPlayerRealTimeNotification @"kPlayerRealTimeNotification"
 @interface DVCusVideoPlayerView()

@@ -11,7 +11,7 @@
 
 @implementation ALUITool
 + (CGSize)sizeOfLabel:(UILabel *)label labelWidth:(CGFloat)labelWidth{
-    if (!label || !label.text || [label.text isBlank]) {
+    if (!label || !label.text) {
         return CGSizeZero;
     }
     return [label.text sizeWithFont:label.font maxSize:CGSizeMake(labelWidth, MAXFLOAT)];

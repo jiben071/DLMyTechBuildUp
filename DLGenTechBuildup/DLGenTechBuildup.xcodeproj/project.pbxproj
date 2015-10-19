@@ -64,6 +64,8 @@
 		10166D1F1BC79444001B2A70 /* ZCTradeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D151BC79444001B2A70 /* ZCTradeInputView.m */; settings = {ASSET_TAGS = (); }; };
 		10166D201BC79444001B2A70 /* ZCTradeKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D171BC79444001B2A70 /* ZCTradeKeyboard.m */; settings = {ASSET_TAGS = (); }; };
 		10166D211BC79444001B2A70 /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 10166D191BC79444001B2A70 /* ZCTradeView.m */; settings = {ASSET_TAGS = (); }; };
+		108432501BD4B5BC002C7F0E /* DLHttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1084324F1BD4B5BC002C7F0E /* DLHttpHelper.m */; settings = {ASSET_TAGS = (); }; };
+		108432531BD4B697002C7F0E /* DLReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 108432521BD4B697002C7F0E /* DLReachability.m */; settings = {ASSET_TAGS = (); }; };
 		109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 109883441BBA5C5400310F7B /* UIImage+dl.m */; settings = {ASSET_TAGS = (); }; };
 		1098834C1BBA8CCD00310F7B /* UINavigationBar+dl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1098834B1BBA8CCD00310F7B /* UINavigationBar+dl.m */; settings = {ASSET_TAGS = (); }; };
 		10C614E51BCD211D00E6B7D7 /* DLVedioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C614E41BCD211D00E6B7D7 /* DLVedioTool.m */; settings = {ASSET_TAGS = (); }; };
@@ -212,6 +214,10 @@
 		10166D171BC79444001B2A70 /* ZCTradeKeyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeKeyboard.m; sourceTree = "<group>"; };
 		10166D181BC79444001B2A70 /* ZCTradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeView.h; sourceTree = "<group>"; };
 		10166D191BC79444001B2A70 /* ZCTradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeView.m; sourceTree = "<group>"; };
+		1084324E1BD4B5BC002C7F0E /* DLHttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLHttpHelper.h; sourceTree = "<group>"; };
+		1084324F1BD4B5BC002C7F0E /* DLHttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLHttpHelper.m; sourceTree = "<group>"; };
+		108432511BD4B697002C7F0E /* DLReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLReachability.h; sourceTree = "<group>"; };
+		108432521BD4B697002C7F0E /* DLReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLReachability.m; sourceTree = "<group>"; };
 		109883431BBA5C5400310F7B /* UIImage+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+dl.h"; sourceTree = "<group>"; };
 		109883441BBA5C5400310F7B /* UIImage+dl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+dl.m"; sourceTree = "<group>"; };
 		1098834A1BBA8CCD00310F7B /* UINavigationBar+dl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+dl.h"; sourceTree = "<group>"; };
@@ -352,6 +358,7 @@
 		100748FD1BB9196D00B80020 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				1084324D1BD4B5A1002C7F0E /* Http */,
 				10C614ED1BCD276B00E6B7D7 /* UITool */,
 				10C614E21BCD210200E6B7D7 /* MediaTool */,
 				100748FE1BB9196D00B80020 /* InternationalControl */,
@@ -666,6 +673,17 @@
 			path = ZCTradeView;
 			sourceTree = "<group>";
 		};
+		1084324D1BD4B5A1002C7F0E /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				108432511BD4B697002C7F0E /* DLReachability.h */,
+				108432521BD4B697002C7F0E /* DLReachability.m */,
+				1084324E1BD4B5BC002C7F0E /* DLHttpHelper.h */,
+				1084324F1BD4B5BC002C7F0E /* DLHttpHelper.m */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
 		109883491BBA8CB300310F7B /* UINavigationBar+Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +791,7 @@
 				1008F6771BB4DE2900300E12 /* Frameworks */,
 				1008F6781BB4DE2900300E12 /* Resources */,
 				5A33FEF9E3F85C08EA9514EB /* Copy Pods Resources */,
+				962AFF55CCA05668264A79F1 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -905,6 +924,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		962AFF55CCA05668264A79F1 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		DC806BBE2823B9AC027E8ED5 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -934,6 +968,7 @@
 				10F530701BB52A7300189AB8 /* DLBasiceAppearanceSettingTool.m in Sources */,
 				100748461BB911D200B80020 /* DLButtonTestViewController.m in Sources */,
 				100749651BB91CDC00B80020 /* UIImage+Resize.m in Sources */,
+				108432531BD4B697002C7F0E /* DLReachability.m in Sources */,
 				1007496C1BB91CDC00B80020 /* UITextField+HideKeyboard.m in Sources */,
 				100749671BB91CDC00B80020 /* UIImage+Scale.m in Sources */,
 				109883451BBA5C5400310F7B /* UIImage+dl.m in Sources */,
@@ -984,6 +1019,7 @@
 				100748421BB90FF700B80020 /* DLTestListTableViewController.m in Sources */,
 				100749551BB91CDC00B80020 /* NSObject+Utility.m in Sources */,
 				1007496A1BB91CDC00B80020 /* UIImageView+LBBlurredImage.m in Sources */,
+				108432501BD4B5BC002C7F0E /* DLHttpHelper.m in Sources */,
 				100749661BB91CDC00B80020 /* UIImage+RoundedCorner.m in Sources */,
 				100749591BB91CDC00B80020 /* NSString+size.m in Sources */,
 				1007483E1BB90F9900B80020 /* DVToolButton.m in Sources */,

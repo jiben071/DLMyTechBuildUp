@@ -9,13 +9,12 @@
 #import "MPMessagePackClient.h"
 
 #import "MPMessagePack.h"
-#import "MPRPCProtocol.h"
+#import "MPRequest.h"
+#import "MPDispatchRequest.h"
 #include <sys/socket.h>
 #include <sys/un.h>
 
-NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
-
-@interface MPMessagePackClient ()
+@interface MPMessagePackClient () <NSStreamDelegate, MPMessagePackCoder>
 @property MPRPCProtocol *protocol;
 @property NSString *name;
 @property MPMessagePackOptions options;
@@ -24,7 +23,7 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
 @property NSInputStream *inputStream;
 @property NSOutputStream *outputStream;
 
-@property NSMutableArray *queue;
+@property NSMutableArray *bufferQueue;
 
 @property NSMutableDictionary *requests;
 
@@ -37,6 +36,9 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
 @property CFSocketNativeHandle nativeSocket; // For native local socket
 @end
 
+
+typedef void (^MPDispatchSignal)(NSInteger messageId);
+
 @implementation MPMessagePackClient
 
 - (instancetype)init {
@@ -47,7 +49,7 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
   if ((self = [super init])) {
     _name = name;
     _options = options;
-    _queue = [NSMutableArray array];
+    _bufferQueue = [NSMutableArray array];
     _readBuffer = [NSMutableData data];
     _requests = [NSMutableDictionary dictionary];
     _protocol = [[MPRPCProtocol alloc] init];
@@ -56,8 +58,8 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
 }
 
 - (void)dealloc {
-    _inputStream.delegate = nil;
-    _outputStream.delegate = nil;
+  _inputStream.delegate = nil;
+  _outputStream.delegate = nil;
 }
 
 - (void)setInputStream:(NSInputStream *)inputStream outputStream:(NSOutputStream *)outputStream {
@@ -114,21 +116,18 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
   self.status = MPMessagePackClientStatusClosed;
 }
 
-- (NSArray *)sendRequestWithMethod:(NSString *)method params:(NSArray *)params messageId:(NSInteger)messageId completion:(MPRequestCompletion)completion {
+- (void)sendRequestWithMethod:(NSString *)method params:(NSArray *)params messageId:(NSInteger)messageId completion:(MPRequestCompletion)completion {
   params = [self encodeObject:params];
-  NSArray *request = @[@(0), @(messageId), method, params ? params : NSNull.null];
-
-  NSError *encodeError = nil;
-  NSData *data = [_protocol encodeRequestWithMethod:method params:params messageId:messageId options:0 encodeError:&encodeError];
+  NSError *error = nil;
+  NSData *data = [_protocol encodeRequestWithMethod:method params:params messageId:messageId options:0 framed:(_options & MPMessagePackOptionsFramed) error:&error];
   if (!data) {
-    completion(encodeError, nil);
-    return nil;
+    completion(error, nil);
+    return;
   }
 
-  _requests[@(messageId)] = completion;
+  _requests[@(messageId)] = [MPRequest requestWithCompletion:completion];
   //MPDebug(@"Send: %@", [request componentsJoinedByString:@", "]);
   [self writeData:data];
-  return request;
 }
 
 - (id)encodeObject:(id)object {
@@ -169,23 +168,14 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
   result = [self encodeObject:result];
 
   NSError *encodeError = nil;
-  NSData *data = [_protocol encodeResponseWithResult:result error:error messageId:messageId options:0 encodeError:&encodeError];
+  NSData *data = [_protocol encodeResponseWithResult:result error:error messageId:messageId options:0 framed:(_options & MPMessagePackOptionsFramed) encodeError:&encodeError];
   NSAssert(data, @"Error building response: %@", encodeError);
   [self writeData:data];
 }
 
 - (void)writeData:(NSData *)data {
-  NSError *error = nil;
-
-  //MPDebug(@"Sending message: %@", object);
-  if (_options & MPMessagePackOptionsFramed) {
-    //MPDebug(@"[%@] Writing frame size: %@", _name, @(data.length));
-    NSData *frameSize = [MPMessagePackWriter writeObject:@(data.length) options:0 error:&error];
-    NSAssert(frameSize, @"Error packing frame size: %@", error);
-    [_queue addObject:frameSize];
-  }
   NSAssert(data.length > 0, @"Data was empty");
-  [_queue addObject:data];
+  [_bufferQueue addObject:data];
   [self checkQueue];
 }
 
@@ -193,7 +183,7 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
   while (YES) {
     if (![_outputStream hasSpaceAvailable]) break;
     
-    NSMutableData *data = [_queue firstObject];
+    NSMutableData *data = [_bufferQueue firstObject];
     if (!data) break;
     
     NSUInteger length = data.length - _writeIndex;
@@ -212,7 +202,7 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
     } else if (bytesWritten != length) {
       _writeIndex += bytesWritten;
     } else {
-      if ([_queue count] > 0) [_queue removeObjectAtIndex:0];
+      if ([_bufferQueue count] > 0) [_bufferQueue removeObjectAtIndex:0];
       _writeIndex = 0;
     }
   }
@@ -247,7 +237,7 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
     }
     if (!frameSize) return;
     if (![frameSize isKindOfClass:NSNumber.class]) {
-      [self handleError:MPMakeError(502, @"[%@] Expected number for frame size. You need to have framing on for both sides?", _name) fatal:YES];
+      [self handleError:MPMakeError(MPRPCErrorResponseInvalid, @"[%@] Expected number for frame size. You need to have framing on for both sides?", _name) fatal:YES];
       return;
     }
     if (_readBuffer.length < (frameSize.unsignedIntegerValue + reader.index)) {
@@ -260,26 +250,42 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
     //MPDebug(@"Data: %@", [data base64EncodedStringWithOptions:0]);
   }
 
+  [self _readMessage:reader completion:^(NSError *error, NSArray *message) {
+    if (error) {
+      [self handleError:error fatal:YES];
+      return;
+    }
+
+    if (message) {
+      [self _handleMessage:message];
+    }
+
+    _readBuffer = [[_readBuffer subdataWithRange:NSMakeRange(reader.index, _readBuffer.length - reader.index)] mutableCopy]; // TODO: Fix mutable copy (this might actually no-op tho)
+    [self checkReadBuffer];
+  }];
+}
+
+- (void)_readMessage:(MPMessagePackReader *)reader completion:(void (^)(NSError *error, NSArray *message))completion {
   NSError *error = nil;
   id<NSObject> obj = [reader readObject:&error];
-  if (error) {
-    [self handleError:error fatal:YES];
-    return;
-  }
-  if (!obj) return;
-  if (![obj isKindOfClass:NSArray.class] || [(NSArray *)obj count] != 4) {
-    [self handleError:MPMakeError(500, @"[%@] Received an invalid response: %@ (%@)", _name, obj, NSStringFromClass([obj class])) fatal:YES];
+  if (!obj || error) {
+    completion(error, nil);
     return;
   }
 
   if (!MPVerifyMessage(obj, &error)) {
-    [self handleError:error fatal:YES];
+    completion(error, nil);
     return;
   }
 
   NSArray *message = (NSArray *)obj;
+  completion(nil, message);
+}
+
+- (void)_handleMessage:(NSArray *)message {
   NSInteger type = [message[0] integerValue];
   NSNumber *messageId = message[1];
+  NSError *error = nil;
   
   if (type == 0) {
     if (!MPVerifyRequest(message, &error)) {
@@ -307,22 +313,19 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
     }
     
     id result = MPIfNull(message[3], nil);
-    MPRequestCompletion completion = _requests[messageId];
-    if (!completion) {
+    MPRequest *request = _requests[messageId];
+    [_requests removeObjectForKey:messageId];
+    if (!request.completion) {
       MPErr(@"No completion block for request: %@", messageId);
-      [self handleError:MPMakeError(501, @"[%@] Got response for unknown request", _name) fatal:NO];
+      [self handleError:MPMakeError(MPRPCErrorResponseInvalid, @"[%@] Got response for unknown request", _name) fatal:NO];
     } else {
-      [_requests removeObjectForKey:messageId];
-      completion(error, result);
+      [request completeWithResult:result error:error];
     }
   } else if (type == 2) {
     NSString *method = MPIfNull(message[1], nil);
     NSArray *params = MPIfNull(message[2], nil);
     [self.delegate client:self didReceiveNotificationWithMethod:method params:params];
   }
-  
-  _readBuffer = [[_readBuffer subdataWithRange:NSMakeRange(reader.index, _readBuffer.length - reader.index)] mutableCopy]; // TODO: Fix mutable copy (this might actually no-op tho)
-  [self checkReadBuffer];
 }
 
 - (void)setStatus:(MPMessagePackClientStatus)status {
@@ -339,6 +342,66 @@ NSString *const MPErrorInfoKey = @"MPErrorInfoKey";
     [self close];
   }
 }
+
+#pragma mark Dispatch
+
+- (id)sendRequestWithMethod:(NSString *)method params:(NSArray *)params messageId:(NSInteger)messageId timeout:(NSTimeInterval)timeout error:(NSError **)error {
+  MPDispatchRequest *dispatchRequest = [MPDispatchRequest dispatchRequest];
+
+  MPDebug(@"Send request: %@", @(messageId));
+  [self sendRequestWithMethod:method params:params messageId:messageId completion:^(NSError *requestError, id result) {
+    MPDebug(@"Done: %@", @(messageId));
+    dispatchRequest.result = result;
+    dispatchRequest.error = requestError;
+    [self _signalDispatch:messageId dispatchRequest:dispatchRequest];
+  }];
+
+  [self _waitDispatch:messageId dispatchRequest:dispatchRequest timeout:timeout];
+  if (dispatchRequest.error) {
+    *error = dispatchRequest.error;
+    return nil;
+  }
+
+  if (!dispatchRequest.result) return [NSNull null];
+  return dispatchRequest.result;
+}
+
+- (BOOL)_signalDispatch:(NSInteger)messageId dispatchRequest:(MPDispatchRequest *)dispatchRequest {
+  if (!dispatchRequest) {
+    MPErr(@"No request to signal (%@)", @(messageId));
+    return NO;
+  }
+
+  MPDebug(@"Signal: %@", dispatchRequest);
+  long signalStatus = dispatch_semaphore_signal(dispatchRequest.semaphore);
+  MPDebug(@"Signal status: %@", @(signalStatus));
+  return (signalStatus != 0);
+}
+
+- (void)_waitDispatch:(NSInteger)messageId dispatchRequest:(MPDispatchRequest *)dispatchRequest timeout:(NSTimeInterval)timeout {
+  if (!dispatchRequest.semaphore) {
+    dispatchRequest.error = MPMakeError(MPRPCErrorResponseInvalid, @"Nothing to wait on. Response already timed out, canceled or responded?");
+    return;
+  }
+
+  MPDebug(@"Wait: %@", @(messageId));
+
+  dispatch_time_t time = timeout > 0 ? dispatch_time(DISPATCH_TIME_NOW, timeout * NSEC_PER_SEC) : DISPATCH_TIME_FOREVER;
+  long status = dispatch_semaphore_wait(dispatchRequest.semaphore, time);
+
+  if (status != 0 && !dispatchRequest.error) dispatchRequest.error = MPMakeError(MPRPCErrorRequestTimeout, @"Request timeout");
+}
+
+- (BOOL)cancelRequestWithMessageId:(NSInteger)messageId {
+  MPDebug(@"Cancel: %@", @(messageId));
+  MPRequest *request = _requests[@(messageId)];
+  if (!request.completion) return NO;
+
+  [request completeWithResult:nil error:MPMakeError(MPRPCErrorRequestCanceled, @"Cancelled")];
+  return YES;
+}
+
+#pragma mark Stream Events
 
 NSString *MPNSStringFromNSStreamEvent(NSStreamEvent e) {
   NSMutableString *str = [[NSMutableString alloc] init];
@@ -412,12 +475,12 @@ NSString *MPNSStringFromNSStreamEvent(NSStreamEvent e) {
   CFSocketNativeHandle sock = socket(AF_UNIX, SOCK_STREAM, 0);
   _socket = CFSocketCreateWithNative(nil, sock, types, MPSocketClientCallback, &context);
   if (!_socket) {
-    completion(MPMakeError(MPMessagePackErrorSocketCreateError, @"Couldn't create native socket to: %@", socketName));
+    completion(MPMakeError(MPRPCErrorSocketCreateError, @"Couldn't create native socket to: %@", socketName));
     return NO;
   }
 
   if (![NSFileManager.defaultManager isReadableFileAtPath:socketName]) {
-    completion(MPMakeError(MPMessagePackErrorSocketOpenError, @"Path doesn't exist or is unreadable: %@", socketName));
+    completion(MPMakeError(MPRPCErrorSocketOpenError, @"Path doesn't exist or is unreadable: %@", socketName));
     return NO;
   }
 
@@ -429,10 +492,10 @@ NSString *MPNSStringFromNSStreamEvent(NSStreamEvent e) {
 
   CFSocketError err = CFSocketConnectToAddress(_socket, (__bridge CFDataRef)address, (CFTimeInterval)2);
   if (err != kCFSocketSuccess) {
-    MPMessagePackError mpError;
+    MPRPCError mpError;
     switch (err) {
-      case kCFSocketError: mpError = MPMessagePackErrorSocketOpenError; break;
-      case kCFSocketTimeout: mpError = MPMessagePackErrorSocketOpenTimeout; break;
+      case kCFSocketError: mpError = MPRPCErrorSocketOpenError; break;
+      case kCFSocketTimeout: mpError = MPRPCErrorSocketOpenTimeout; break;
       case kCFSocketSuccess: mpError = 0; break; // This will never happen
     }
     completion(MPMakeError(mpError, @"Couldn't open socket: %@", socketName));
@@ -516,96 +579,3 @@ static void MPSocketClientCallback(CFSocketRef socket, CFSocketCallBackType type
 
 @end
 
-BOOL MPVerifyMessage(id message, NSError **error) {
-  if (![message isKindOfClass:NSArray.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Not NSArray type");
-    return NO;
-  }
-
-  if ([message count] != 4) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Request should have 4 elements");
-    return NO;
-  }
-
-  id typeObj = MPIfNull(message[0], nil);
-  if (!typeObj) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; First element (type) can't be null");
-    return NO;
-  }
-  if (![typeObj isKindOfClass:NSNumber.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; First element (type) is not a number");
-    return NO;
-  }
-
-  id messageIdObj = MPIfNull(message[1], nil);
-  if (!messageIdObj) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Second element (messageId) can't be null");
-    return NO;
-  }
-  if (![messageIdObj isKindOfClass:NSNumber.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Second element (messageId) is not a number");
-    return NO;
-  }
-
-  return YES;
-}
-
-BOOL MPVerifyRequest(NSArray *request, NSError **error) {
-  NSInteger type = [request[0] integerValue];
-  if (type != 0) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; First element (type) is not 0: %@", @(type)); // Request type=0
-    return NO;
-  }
-
-  id methodObj = MPIfNull(request[2], nil);
-  if (!methodObj) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Third element (method) can't be null");
-    return NO;
-  }
-  if (![methodObj isKindOfClass:NSString.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Third element (method) is not a string");
-    return NO;
-  }
-
-  id paramsObj = MPIfNull(request[3], nil);
-  if (paramsObj && ![paramsObj isKindOfClass:NSArray.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid request; Fourth element (params) is not an array");
-    return NO;
-  }
-
-  return YES;
-}
-
-BOOL MPVerifyResponse(NSArray *response, NSError **error) {
-  NSInteger type = [response[0] integerValue];
-  if (type != 1) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid response; First element (type) is not 1"); // Request type=1
-    return NO;
-  }
-
-  id messageIdObj = MPIfNull(response[1], nil);
-  if (!messageIdObj) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid response; Second element (messageId) can't be null");
-    return NO;
-  }
-  if (![messageIdObj isKindOfClass:NSNumber.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid response; Second element (messageId) is not a number");
-    return NO;
-  }
-
-  id errorObj = MPIfNull(response[2], nil);
-  if (errorObj && ![errorObj isKindOfClass:NSDictionary.class]) {
-    if (error) *error = MPMakeError(MPMessagePackErrorInvalidRequest, @"Invalid response; Third element (error) is not a dictionary");
-    return NO;
-  }
-
-  return YES;
-}
-
-NSError *MPErrorFromErrorDict(NSString *domain, NSDictionary *dict) {
-  NSInteger code = -1;
-  if (dict[@"code"]) code = [dict[@"code"] integerValue];
-  NSString *desc = @"Oops, something wen't wrong";
-  if (dict[@"desc"]) desc = [dict[@"desc"] description];
-  return [NSError errorWithDomain:domain code:code userInfo:@{NSLocalizedDescriptionKey: desc, MPErrorInfoKey: dict}];
-}
